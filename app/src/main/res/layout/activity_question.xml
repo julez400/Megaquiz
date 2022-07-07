@@ -6,4 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".QuestionActivity">
 
+    <TextView
+        android:id="@+id/questionTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/question"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/aButton"
+                android:layout_width="115dp"
+                android:layout_height="74dp"
+                android:contentDescription="@string/a"
+                android:text="@string/a" />
+
+            <Button
+                android:id="@+id/bButton"
+                android:layout_width="115dp"
+                android:layout_height="74dp"
+                android:text="@string/b" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/cButton"
+                android:layout_width="115dp"
+                android:layout_height="74dp"
+                android:text="@string/c" />
+
+            <Button
+                android:id="@+id/dButton"
+                android:layout_width="113dp"
+                android:layout_height="74dp"
+                android:text="@string/d" />
+        </TableRow>
+
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,10 +5,10 @@
     <string name="start">Start</string>
 
     <string name="question"></string>
-    <string name="a"></string>
-    <string name="b"></string>
-    <string name="c"></string>
-    <string name="d"></string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
 
     <string name="incorrect">False</string>
     <string name="correct">Correct</string>
