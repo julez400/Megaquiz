@@ -4,7 +4,7 @@
     <string name="begin">Begin with Quiz here</string>
     <string name="start">Start</string>
 
-    <string name="question"></string>
+    <string name="question">"?"</string>
     <string name="a">A</string>
     <string name="b">B</string>
     <string name="c">C</string>
@@ -15,8 +15,10 @@
     <string name="resume">Resume</string>
 
     <string name="congratulation">Congratulation!</string>
-    <string name="time">Time:!</string>
+    <string name="time">Time:</string>
+    <string name="usedTime">1:45</string>
     <string name="correctAnwsers">Correct Anwsers:</string>
+    <string name="score">7/10</string>
     <string name="returnStart">Back to Start</string>
 
 
