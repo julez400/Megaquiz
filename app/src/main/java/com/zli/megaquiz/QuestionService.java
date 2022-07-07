@@ -8,7 +8,11 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.util.JsonReader;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -53,8 +58,26 @@ public class QuestionService extends Service {
                 URL url = new URL("https://opentdb.com/api.php?amount=10&type=multiple");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = new BufferedInputStream(connection.getInputStream());
+
+                ByteArrayOutputStream result = new ByteArrayOutputStream();
+                byte[] buffer = new byte[8192];
+                int length;
+                while ((length = inputStream.read(buffer)) != -1) {
+                    result.write(buffer, 0, length);
+                }
+                String jsonResult = result.toString("UTF-8");
+                JSONObject json = new JSONObject(jsonResult);
+
+                JSONObject quiz = (JSONObject) json.getJSONArray(question).get(0);
+
+                System.out.println(quiz);
+
+                inputStream.close();
+
+                /*
                 JsonReader reader = new JsonReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
                 reader.beginObject();
+
 
                 int i = 0;
                 int j = 0;
@@ -69,11 +92,11 @@ public class QuestionService extends Service {
                     } else if (name.equals(correctAnswer)) {
                         correctAnswers[j] = String.valueOf(reader.nextString());
                         j++;
-                        /*
+
                     } else if (name.equals(incorrectAnswer)) {
                         correctAnswers[j] = String.valueOf(reader.nextString());
                         k =;
-                         */
+
                     } else {
                         reader.skipValue();
                     }
@@ -81,11 +104,15 @@ public class QuestionService extends Service {
                 questionServiceEventListener.onDone();
                 reader.close();
                 inputStream.close();
+                */
 
+                questionServiceEventListener.onDone();
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         });
