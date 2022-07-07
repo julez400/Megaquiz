@@ -44,7 +44,7 @@ public class QuestionService extends Service {
         return binder;
     }
 
-    public void getQuestion() {
+    public void getQuestionFromAPI(QuestionServiceEventListener questionServiceEventListener) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.myLooper());
 
@@ -54,9 +54,6 @@ public class QuestionService extends Service {
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = new BufferedInputStream(connection.getInputStream());
                 JsonReader reader = new JsonReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-                reader.beginObject();
-                reader.nextName();
-                reader.beginArray();
                 reader.beginObject();
 
                 int i = 0;
@@ -72,27 +69,36 @@ public class QuestionService extends Service {
                     } else if (name.equals(correctAnswer)) {
                         correctAnswers[j] = String.valueOf(reader.nextString());
                         j++;
-                    /*
-                } else if (name.equals(incorrectAnswer)) {
-                    correctAnswers[j] = String.valueOf(reader.nextString());
-                    k =;
-                     */
+                        /*
+                    } else if (name.equals(incorrectAnswer)) {
+                        correctAnswers[j] = String.valueOf(reader.nextString());
+                        k =;
+                         */
                     } else {
                         reader.skipValue();
                     }
                 }
+                questionServiceEventListener.onDone();
                 reader.close();
                 inputStream.close();
+
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            handler.post(() -> {
-
-            });
         });
     }
 
+    public String getQuestion(){
+        return question;
+    }
+    public String getAnwsers(int i){
+        return correctAnswers[i];
+    }
+}
 
+interface QuestionServiceEventListener {
+    void onDone();
 }

@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 public class EndActivity extends AppCompatActivity {
 
-    Button backToStartButton;
-    TextView time;
-    TextView score;
+    private Button backToStartButton;
+    private TextView time;
+    private TextView score;
 
 
     @Override
