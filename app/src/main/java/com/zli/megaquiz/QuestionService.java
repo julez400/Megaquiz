@@ -21,19 +21,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class QuestionService extends Service {
 
-    private String question = "question";
-    private String correctAnswer = "correct_answer";
-    private String incorrectAnswer = "incorrect_answer";
-    private String[] questions = new String[9];
-    private String[] correctAnswers = new String[9];
-
-
     private final IBinder binder = new QuestionBinder();
+
+    private ArrayList<Question> questions = new ArrayList<>();
 
     public class QuestionBinder extends Binder {
         public QuestionService getService() {
@@ -68,43 +66,21 @@ public class QuestionService extends Service {
                 String jsonResult = result.toString("UTF-8");
                 JSONObject json = new JSONObject(jsonResult);
 
-                JSONObject quiz = (JSONObject) json.getJSONArray(question).get(0);
 
-                System.out.println(quiz);
+                for (int i=0; i <= 9; i++){
 
-                inputStream.close();
+                    JSONObject quiz = (JSONObject) json.getJSONArray("results").get(i);
+                    Question question = new Question();
+                    question.setQuestion(quiz.getString("question"));
+                    question.setCorrectAnwser(quiz.getString("correct_answer"));
+                    question.setWrongAnwser1((String) quiz.getJSONArray("incorrect_answers").get(0));
+                    question.setWrongAnwser2((String) quiz.getJSONArray("incorrect_answers").get(1));
+                    question.setWrongAnwser3((String) quiz.getJSONArray("incorrect_answers").get(2));
+                    questions.add(question);
 
-                /*
-                JsonReader reader = new JsonReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-                reader.beginObject();
-
-
-                int i = 0;
-                int j = 0;
-                int k = 0;
-
-
-                while (reader.hasNext()) {
-                    String name = reader.nextName();
-                    if (name.equals(question)) {
-                        questions[i] = String.valueOf(reader.nextString());
-                        i++;
-                    } else if (name.equals(correctAnswer)) {
-                        correctAnswers[j] = String.valueOf(reader.nextString());
-                        j++;
-
-                    } else if (name.equals(incorrectAnswer)) {
-                        correctAnswers[j] = String.valueOf(reader.nextString());
-                        k =;
-
-                    } else {
-                        reader.skipValue();
-                    }
                 }
-                questionServiceEventListener.onDone();
-                reader.close();
+
                 inputStream.close();
-                */
 
                 questionServiceEventListener.onDone();
 
@@ -118,11 +94,21 @@ public class QuestionService extends Service {
         });
     }
 
-    public String getQuestion(){
-        return question;
+    public String getQuestions(int i){
+        return questions.get(i).getQuestion();
     }
-    public String getAnwsers(int i){
-        return correctAnswers[i];
+
+    public String getAnwsers(int i, int anwser){
+        ArrayList<String> answers = new ArrayList<>();
+        answers.add(questions.get(i).getCorrectAnwser());
+        answers.add(questions.get(i).getWrongAnwser1());
+        answers.add(questions.get(i).getWrongAnwser2());
+        answers.add(questions.get(i).getWrongAnwser3());
+
+        return answers.get(anwser);
+    }
+    public String getCorrectAnwsers(int i){
+        return questions.get(i).getCorrectAnwser();
     }
 }
 
