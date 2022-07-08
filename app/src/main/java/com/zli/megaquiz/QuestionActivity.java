@@ -41,6 +41,8 @@ public class QuestionActivity extends AppCompatActivity {
         cButton = findViewById(R.id.cButton);
         dButton = findViewById(R.id.dButton);
         question = findViewById(R.id.questionTxt);
+
+        counter = getIntent().getIntExtra("counter", 0);
     }
 
     /**

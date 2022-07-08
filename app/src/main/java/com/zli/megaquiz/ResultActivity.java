@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ public class ResultActivity extends AppCompatActivity {
     private String correctAnwsers;
     private int counter;
 
+    private Vibrator vibrator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,35 +30,34 @@ public class ResultActivity extends AppCompatActivity {
         correctAnwser = findViewById(R.id.anwserTxt);
 
         Intent caller = getIntent();
-        results = caller.getBooleanExtra("result",false);
+        results = caller.getBooleanExtra("result", false);
         correctAnwsers = caller.getStringExtra("correctAnwser");
         counter = caller.getIntExtra("counter", 0);
 
 
-
-        if (results == true){
+        if (results == true) {
             result.setText("Correct!");
-        }
-        else {
+            vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(1000);
+        } else {
             result.setText("False");
         }
 
         correctAnwser.setText(correctAnwsers);
 
-        if (counter <= 10){
-            resumeButton.setOnClickListener(view -> {
+        resumeButton.setOnClickListener(view -> {
+            if (counter <= 10) {
+                counter++;
                 Intent backIntent = new Intent(this, QuestionActivity.class);
                 backIntent.putExtra("counter", counter);
                 startActivity(backIntent);
-            });
-        }
-        else {
-            resumeButton.setOnClickListener(view -> {
+
+            } else {
                 Intent endIntent = new Intent(this, EndActivity.class);
                 startActivity(endIntent);
-            });
-        }
 
+            }
+        });
 
 
     }
