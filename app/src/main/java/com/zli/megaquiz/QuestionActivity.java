@@ -11,6 +11,8 @@ import android.os.IBinder;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.zli.megaquiz.controller.ResultActivity;
+
 /**
  * @author Julian Wittmann
  */

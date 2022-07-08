@@ -1,4 +1,4 @@
-package com.zli.megaquiz;
+package com.zli.megaquiz.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.zli.megaquiz.R;
 
 public class EndActivity extends AppCompatActivity {
 

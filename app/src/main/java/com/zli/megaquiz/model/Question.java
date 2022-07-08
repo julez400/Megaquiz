@@ -1,4 +1,4 @@
-package com.zli.megaquiz;
+package com.zli.megaquiz.model;
 
 public class Question {
 

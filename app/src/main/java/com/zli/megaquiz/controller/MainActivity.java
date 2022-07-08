@@ -1,10 +1,13 @@
-package com.zli.megaquiz;
+package com.zli.megaquiz.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.zli.megaquiz.QuestionActivity;
+import com.zli.megaquiz.R;
 
 public class MainActivity extends AppCompatActivity {
 

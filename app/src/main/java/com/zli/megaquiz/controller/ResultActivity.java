@@ -1,4 +1,4 @@
-package com.zli.megaquiz;
+package com.zli.megaquiz.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.zli.megaquiz.QuestionActivity;
+import com.zli.megaquiz.R;
+import com.zli.megaquiz.controller.EndActivity;
 
 public class ResultActivity extends AppCompatActivity {
 
