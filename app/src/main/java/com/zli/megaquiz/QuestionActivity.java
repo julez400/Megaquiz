@@ -64,6 +64,7 @@ public class QuestionActivity extends AppCompatActivity {
                         Intent resultIntent = new Intent(this, ResultActivity.class);
                         resultIntent.putExtra("result", result);
                         resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                        resultIntent.putExtra("counter", counter);
                         startActivity(resultIntent);
                     }
                     else{
@@ -71,6 +72,7 @@ public class QuestionActivity extends AppCompatActivity {
                         Intent resultIntent = new Intent(this, ResultActivity.class);
                         resultIntent.putExtra("result", result);
                         resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                        resultIntent.putExtra("counter", counter);
                         startActivity(resultIntent);
                     }
             });
@@ -80,6 +82,7 @@ public class QuestionActivity extends AppCompatActivity {
                     Intent resultIntent = new Intent(this, ResultActivity.class);
                     resultIntent.putExtra("result", result);
                     resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                    resultIntent.putExtra("counter", counter);
                     startActivity(resultIntent);
                 }
                 else{
@@ -87,6 +90,7 @@ public class QuestionActivity extends AppCompatActivity {
                     Intent resultIntent = new Intent(this, ResultActivity.class);
                     resultIntent.putExtra("result", result);
                     resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                    resultIntent.putExtra("counter", counter);
                     startActivity(resultIntent);
                 }
             });
@@ -96,6 +100,7 @@ public class QuestionActivity extends AppCompatActivity {
                     Intent resultIntent = new Intent(this, ResultActivity.class);
                     resultIntent.putExtra("result", result);
                     resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                    resultIntent.putExtra("counter", counter);
                     startActivity(resultIntent);
                 }
                 else{
@@ -103,6 +108,7 @@ public class QuestionActivity extends AppCompatActivity {
                     Intent resultIntent = new Intent(this, ResultActivity.class);
                     resultIntent.putExtra("result", result);
                     resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                    resultIntent.putExtra("counter", counter);
                     startActivity(resultIntent);
                 }
             });
@@ -112,6 +118,7 @@ public class QuestionActivity extends AppCompatActivity {
                     Intent resultIntent = new Intent(this, ResultActivity.class);
                     resultIntent.putExtra("result", result);
                     resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                    resultIntent.putExtra("counter", counter);
                     startActivity(resultIntent);
                 }
                 else{
@@ -119,6 +126,7 @@ public class QuestionActivity extends AppCompatActivity {
                     Intent resultIntent = new Intent(this, ResultActivity.class);
                     resultIntent.putExtra("result", result);
                     resultIntent.putExtra("correctAnwser", questionService.getCorrectAnwsers(counter));
+                    resultIntent.putExtra("counter", counter);
                     startActivity(resultIntent);
                 }
             });
